@@ -75,6 +75,7 @@ def build_optimizers_tf_v1(optimizer_config, global_step=None):
     optimizer = tf_opt.MovingAverageOptimizer(
         optimizer, average_decay=optimizer_config.moving_average_decay)
 
+  optimizer = tf.train.experimental.enable_mixed_precision_graph_rewrite(optimizer)
   return optimizer, summary_vars
 
 
